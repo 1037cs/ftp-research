@@ -14,8 +14,8 @@ The FTP server address, username and password are entered by the user.
 
 ## 🌕 How to work with the client:
 1. Open **index.html** in any browser
-2. Input Host adress (_default: '91.222.128.11"_)
-3. Input login (_default: 'testftp_guest'_)
+2. Input host adress (_default: '91.222.128.11"_)
+3. Input login (_default: 'testftp_guest'_) (**port is default 21**)
 4. Input password (_default: '12345'_)
 5. Click on blue button
 6. If nothing happened check the browser-console
