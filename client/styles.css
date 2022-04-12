@@ -90,6 +90,10 @@ body{
     height: 300px;
     width: 400px;
 }
+.popup_container_content{
+    overflow: auto;
+    height: 100%;
+}
 
 .popup_button_close{
     color: #BC0000;
@@ -97,6 +101,7 @@ body{
     position: absolute;
     right: 0;
     margin: 6px 10px 0 0;
+    cursor: pointer;
 }
 
 .info_container_size{
@@ -104,9 +109,21 @@ body{
     margin-top: 27px;
 }
 
-.info_container:not(:last-child){
-    border-bottom: 1px solid #DEDEDE;
+.info_container{
+    color: black;
+    font-size:13px;
+    display: flex;
+    flex-direction: column;
+    padding: 3px 0 ;
+    overflow: auto;
     margin-left: 10px;
     width: 380px;
-    height: 24px;
+}
+
+.file{
+    margin-left: 30px;
+}
+
+.info_container:not(:last-child){
+    border-bottom: 1px solid #DEDEDE;
 }

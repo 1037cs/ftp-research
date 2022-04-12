@@ -13,6 +13,7 @@ router.post('/ftp', async (req, res) => {
 async function getList(client,str='./') {
 	const list = await client.list(str)
 	for(let i=0;i<list.length;i++){
+		list[i].parents=str.split('/')
 		files.push(list[i])
 
 		if(list[i].type=='2'){
