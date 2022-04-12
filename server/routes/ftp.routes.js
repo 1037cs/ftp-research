@@ -5,6 +5,7 @@ let files = []
 const router = new Router()
 
 router.post('/ftp', async (req, res) => {
+	files=[]
 	await ftpConnect(req, res)
 	return res.json({files})
 })

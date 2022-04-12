@@ -11,7 +11,7 @@ button.addEventListener('click', () => {
 	xhr.onload = () => {
 		if(!JSON.parse(xhr.response).message) {
 			const list = JSON.parse(xhr.response).files
-
+			console.log(list)
 			let summarySize = 0,
 				typeSizeList = [],
 				pathsList = [{dirName: '.', elements: []}]
@@ -30,6 +30,7 @@ button.addEventListener('click', () => {
 			printSummarySizeOfFiles(summarySize, document.querySelector('.info_container_size'))
 			printSizeOfEachType(typeSizeList, document.querySelector('.info_container_typesize'))
 			printCatalog(pathsList, document.querySelector('.info_container_catalog'))
+			console.log(summarySize)
 
 			document.querySelector('.container').style.visibility = 'hidden'
 			document.querySelector('.popup_background').style.visibility = 'visible'
@@ -80,12 +81,14 @@ function buildCatalog(pathsList, list) {
 
 //print functions
 function printSummarySizeOfFiles(size, div) {
+	div.innerHTML=''
 	const span = document.createElement('span')
 	span.innerHTML = `Summary size of files is <b>${(size / 1024 / 1024).toFixed(2)} MB</b>`
 	div.append(span)
 }
 
 function printSizeOfEachType(list,div){
+	div.innerHTML=''
 	for(let i=0; i<list.length;i++) {
 		const span = document.createElement('span')
 		span.innerHTML = `Size of <b>${list[i].name}</b> files is <b>${(list[i].size/1024).toFixed(2)} KB</b>`
@@ -94,6 +97,7 @@ function printSizeOfEachType(list,div){
 }
 
 function printCatalog(list,div){
+	div.innerHTML=''
 	for(let i=0; i<list.length;i++) {
 		const dirName = document.createElement('span')
 		if(list[i].elements.length==0) dirName.innerHTML = `Directory <b>${list[i].dirName}</b> is empty<br>`
