@@ -9,30 +9,33 @@ button.addEventListener('click', () => {
 	xhr.open('POST', 'http://localhost:3000/api/ftp')
 
 	xhr.onload = () => {
-		const list = JSON.parse(xhr.response).files
-		console.log(list)
-		let summarySize = 0,
-			typeSizeList = [],
-			pathsList = [{dirName: '.', elements: []}]
+		if(!JSON.parse(xhr.response).message) {
+			const list = JSON.parse(xhr.response).files
 
-		for (let i = 0; i < list.length; i++) {
-			if (list[i].type != '2') {
-				summarySize = calcSummarySizeOfFiles(summarySize, list[i].size)
-				calcSizeOfEachType(typeSizeList, list[i])
-				buildCatalog(pathsList, list[i])
+			let summarySize = 0,
+				typeSizeList = [],
+				pathsList = [{dirName: '.', elements: []}]
 
-			} else {
-				pathsList.push({dirName: list[i].name, elements: []})
+			for (let i = 0; i < list.length; i++) {
+				if (list[i].type != '2') {
+					summarySize = calcSummarySizeOfFiles(summarySize, list[i].size)
+					calcSizeOfEachType(typeSizeList, list[i])
+					buildCatalog(pathsList, list[i])
+
+				} else {
+					pathsList.push({dirName: list[i].name, elements: []})
+				}
 			}
+
+			printSummarySizeOfFiles(summarySize, document.querySelector('.info_container_size'))
+			printSizeOfEachType(typeSizeList, document.querySelector('.info_container_typesize'))
+			printCatalog(pathsList, document.querySelector('.info_container_catalog'))
+
+			document.querySelector('.container').style.visibility = 'hidden'
+			document.querySelector('.popup_background').style.visibility = 'visible'
+		} else{
+			console.log(JSON.parse(xhr.response).message)
 		}
-
-		printSummarySizeOfFiles(summarySize, document.querySelector('.info_container_size'))
-		printSizeOfEachType(typeSizeList,document.querySelector('.info_container_typesize'))
-		console.log(pathsList)
-		printCatalog(pathsList,document.querySelector('.info_container_catalog'))
-
-		document.querySelector('.container').style.visibility = 'hidden'
-		document.querySelector('.popup_background').style.visibility = 'visible'
 	}
 	xhr.setRequestHeader('Content-Type', 'application/json')
 
