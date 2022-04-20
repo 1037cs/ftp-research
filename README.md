@@ -9,8 +9,7 @@ The FTP server address, username and password are entered by the user.
 
 ## 🌑 How to start the server: 
 1. Install **Node.JS**
-2. Install **npm** 
-3. Write in terminal: 
+2. Write in terminal: 
 ```npm start```
 
 ## 🌕 How to work with the client:
