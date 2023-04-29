@@ -25,4 +25,4 @@ The FTP server address, username and password are entered by the user.
 5. Click on blue button
 6. If nothing happened check the browser-console
 
-Stack of libraries: [express](https://www.npmjs.com/package/express), [basic-ftp](https://www.npmjs.com/package/basic-ftp), [cors](https://www.npmjs.com/package/cors)
+Stack of libraries: [express](https://www.npmjs.com/package/express), [basic-ftp](https://www.npmjs.com/package/basic-ftp)
